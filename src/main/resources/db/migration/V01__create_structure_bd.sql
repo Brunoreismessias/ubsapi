@@ -2,7 +2,8 @@ CREATE TABLE public.basic_health_unit
 	(
 		id bigint NOT NULL,
 		name character varying(30) NOT NULL,
-		PRIMARY KEY (id)
+		code integer NOT NULL,
+		CONSTRAINT basic_health_unit_pk PRIMARY KEY (id)
 	)
 WITH (
     OIDS = FALSE
@@ -13,7 +14,8 @@ CREATE TABLE public.type_street
 	(
 		id bigint NOT NULL,
 		description character varying(10),
-		PRIMARY KEY (id)
+		short character(3),
+		CONSTRAINT type_street_pk PRIMARY KEY (id)
 	)
 WITH (
     OIDS = FALSE
@@ -26,12 +28,12 @@ CREATE TABLE public.address
 		basic_health_unit_id bigint NOT NULL,
 		description character varying(40),
 		"number" character varying(6),
-		neighborhood character varying(20),
+		district character varying(20),
 		complement character varying(30),
 		zip_code character varying(8),
 		city_id bigint NOT NULL,
 		state_id bigint NOT NULL,
-		CONSTRAINT pk_address PRIMARY KEY (id)   
+		CONSTRAINT address_pk PRIMARY KEY (id)   
 	)
 WITH (
     OIDS = FALSE
@@ -41,7 +43,8 @@ CREATE TABLE public.state
 	(
 		id bigint NOT NULL,
 		description character varying(30),
-		PRIMARY KEY (id)
+		short character varying(2),
+		CONSTRAINT state_pk PRIMARY KEY (id)
 	)
 WITH (
     OIDS = FALSE
@@ -52,7 +55,8 @@ CREATE TABLE public.city
 	(
 		id bigint NOT NULL,
 		description character varying(30),
-		PRIMARY KEY (id)
+		state_id bigint,
+		CONSTRAINT city_pk PRIMARY KEY (id)
 	)
 WITH (
     OIDS = FALSE
@@ -64,7 +68,7 @@ CREATE TABLE public.contacts
 		basic_health_unit_id bigint NOT NULL,
 		ddd character varying(3),
 		phone character varying(8),
-		PRIMARY KEY (id)
+		CONSTRAINT contacts_pk PRIMARY KEY (id)
 	)
 WITH (
     OIDS = FALSE
@@ -74,9 +78,9 @@ CREATE TABLE public.geo_code
 	(
 		id bigint NOT NULL,
 		basic_health_unit_id bigint NOT NULL,
-		latitude bigint NOT NULL,
-		longitude bigint NOT NULL,
-		PRIMARY KEY (id)
+		latitude numeric (12, 5) NOT NULL,
+		longitude numeric (12, 5) NOT NULL,
+		CONSTRAINT geo_code_pk PRIMARY KEY (id)
 	)
 WITH (
     OIDS = FALSE
@@ -90,7 +94,7 @@ CREATE TABLE public.scores
 		adaptation_for_seniors integer,
 		medical_equipment integer,
 		medicine integer,
-		PRIMARY KEY (id)
+		CONSTRAINT scores_pk PRIMARY KEY (id)
 	)
 WITH (
     OIDS = FALSE
@@ -225,5 +229,11 @@ ALTER TABLE public.geo_code
 ALTER TABLE public.scores
     ADD CONSTRAINT basic_health_unit_fk FOREIGN KEY (basic_health_unit_id)
     REFERENCES public.basic_health_unit (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+    
+ALTER TABLE public.city
+    ADD CONSTRAINT state_id FOREIGN KEY (state_id)
+    REFERENCES public.state (id) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;
