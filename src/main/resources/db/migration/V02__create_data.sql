@@ -1,15 +1,15 @@
-INSERT INTO public.state (id, description, short) VALUES(nextval('state_seq'), 'SÃO PAULO', 'SP');
-INSERT INTO public.state (id, description, short) VALUES(nextval('state_seq'), 'RIO DE JANEIRO', 'RJ');
-INSERT INTO public.state (id, description, short) VALUES(nextval('state_seq'), 'BAHIA', 'BA');
+INSERT INTO public.province (id, description, short) VALUES(nextval('province_seq'), 'SÃO PAULO', 'SP');
+INSERT INTO public.province (id, description, short) VALUES(nextval('province_seq'), 'RIO DE JANEIRO', 'RJ');
+INSERT INTO public.province (id, description, short) VALUES(nextval('province_seq'), 'BAHIA', 'BA');
 
 INSERT INTO public.type_street (id, description, short) VALUES(nextval('type_street_seq'), 'AVENIDA', 'AV');
 INSERT INTO public.type_street (id, description, short) VALUES(nextval('type_street_seq'), 'RUA', 'RUA');
 INSERT INTO public.type_street (id, description, short) VALUES(nextval('type_street_seq'), 'LARGO', 'LGO');
 
-INSERT INTO public.city (id, description, state_id) VALUES(nextval('city_seq'), 'SÃO PAULO', (select id from public.state where short = 'SP'));
-INSERT INTO public.city (id, description, state_id) VALUES(nextval('city_seq'), 'SÃO BERNRDO DO CAMPO', (select id from public.state where short = 'SP'));
-INSERT INTO public.city (id, description, state_id) VALUES(nextval('city_seq'), 'TABOÃO DA SERRA', (select id from public.state where short = 'SP'));
-INSERT INTO public.city (id, description, state_id) VALUES(nextval('city_seq'), 'SALVADOR', (select id from public.state where short = 'BA'));
+INSERT INTO public.city (id, description, province_id) VALUES(nextval('city_seq'), 'SÃO PAULO', (select id from public.province where short = 'SP'));
+INSERT INTO public.city (id, description, province_id) VALUES(nextval('city_seq'), 'SÃO BERNRDO DO CAMPO', (select id from public.province where short = 'SP'));
+INSERT INTO public.city (id, description, province_id) VALUES(nextval('city_seq'), 'TABOÃO DA SERRA', (select id from public.province where short = 'SP'));
+INSERT INTO public.city (id, description, province_id) VALUES(nextval('city_seq'), 'SALVADOR', (select id from public.province where short = 'BA'));
 
 INSERT INTO public.basic_health_unit (id, "name", code) VALUES(nextval('basic_health_unit_seq'), 'UBS Jardim Europa', 1);
 INSERT INTO public.basic_health_unit (id, "name", code) VALUES(nextval('basic_health_unit_seq'), 'UBS Cidade Jardim', 2);
@@ -35,45 +35,45 @@ INSERT INTO public.contacts (id, basic_health_unit_id, ddd, phone) VALUES(nextva
 INSERT INTO public.contacts (id, basic_health_unit_id, ddd, phone) VALUES(nextval('contacts_seq'), (select id from public.basic_health_unit where code = 10), '011', '41578955');
 
 
-INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, state_id)
+INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, province_id)
 VALUES(nextval('address_seq'), (select id from type_street where short = 'AV'), (select id from public.basic_health_unit where code = 1),
-'PASCAL', '1382', 'Jardim Europa', '', '40000000', (select id from city where description = 'SÃO PAULO'), (select id from public.state where short = 'SP'));
+'PASCAL', '1382', 'Jardim Europa', '', '40000000', (select id from city where description = 'SÃO PAULO'), (select id from public.province where short = 'SP'));
 
-INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, state_id)
+INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, province_id)
 VALUES(nextval('address_seq'), (select id from type_street where short = 'AV'), (select id from public.basic_health_unit where code = 2),
-'RODOVIARIOS', '5382', 'Cidade Jardim', '', '40000000', (select id from city where description = 'SÃO PAULO'), (select id from public.state where short = 'SP'));
+'RODOVIARIOS', '5382', 'Cidade Jardim', '', '40000000', (select id from city where description = 'SÃO PAULO'), (select id from public.province where short = 'SP'));
 
-INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, state_id)
+INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, province_id)
 VALUES(nextval('address_seq'), (select id from type_street where short = 'AV'), (select id from public.basic_health_unit where code = 3),
-'GREGORIO', '1000', 'Morumbi', '', '40100000', (select id from city where description = 'SÃO PAULO'), (select id from public.state where short = 'SP'));
+'GREGORIO', '1000', 'Morumbi', '', '40100000', (select id from city where description = 'SÃO PAULO'), (select id from public.province where short = 'SP'));
 
-INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, state_id)
+INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, province_id)
 VALUES(nextval('address_seq'), (select id from type_street where short = 'AV'), (select id from public.basic_health_unit where code = 4),
-'CAMINHO DAS ARVORES', '82', 'Itaim Bibi', '', '40000000', (select id from city where description = 'SÃO PAULO'), (select id from public.state where short = 'SP'));
+'CAMINHO DAS ARVORES', '82', 'Itaim Bibi', '', '40000000', (select id from city where description = 'SÃO PAULO'), (select id from public.province where short = 'SP'));
 
-INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, state_id)
+INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, province_id)
 VALUES(nextval('address_seq'), (select id from type_street where short = 'AV'), (select id from public.basic_health_unit where code = 5),
-'ALEXANDRE DUMAS', '14A', 'Chacara Santana', '', '40560000', (select id from city where description = 'SÃO PAULO'), (select id from public.state where short = 'SP'));
+'ALEXANDRE DUMAS', '14A', 'Chacara Santana', '', '40560000', (select id from city where description = 'SÃO PAULO'), (select id from public.province where short = 'SP'));
 
-INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, state_id)
+INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, province_id)
 VALUES(nextval('address_seq'), (select id from type_street where short = 'AV'), (select id from public.basic_health_unit where code = 6),
-'DOS ARTISTAS', '555', 'Bronklin', '', '40000000', (select id from city where description = 'SÃO PAULO'), (select id from public.state where short = 'SP'));
+'DOS ARTISTAS', '555', 'Bronklin', '', '40000000', (select id from city where description = 'SÃO PAULO'), (select id from public.province where short = 'SP'));
 
-INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, state_id)
+INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, province_id)
 VALUES(nextval('address_seq'), (select id from type_street where short = 'AV'), (select id from public.basic_health_unit where code = 7),
-'CAMINHO', '2', 'Campo Limpo', '', '40000000', (select id from city where description = 'SÃO PAULO'), (select id from public.state where short = 'SP'));
+'CAMINHO', '2', 'Campo Limpo', '', '40000000', (select id from city where description = 'SÃO PAULO'), (select id from public.province where short = 'SP'));
 
-INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, state_id)
+INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, province_id)
 VALUES(nextval('address_seq'), (select id from type_street where short = 'LGO'), (select id from public.basic_health_unit where code = 8),
-'TREZE', 'SN', 'Santo Amaro', '', '40000000', (select id from city where description = 'SÃO PAULO'), (select id from public.state where short = 'SP'));
+'TREZE', 'SN', 'Santo Amaro', '', '40000000', (select id from city where description = 'SÃO PAULO'), (select id from public.province where short = 'SP'));
 
-INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, state_id)
+INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, province_id)
 VALUES(nextval('address_seq'), (select id from type_street where short = 'RUA'), (select id from public.basic_health_unit where code = 9),
-'PASCAL', '1382', 'Jardim Paulista', '', '40000000', (select id from city where description = 'SÃO PAULO'), (select id from public.state where short = 'SP'));
+'PASCAL', '1382', 'Jardim Paulista', '', '40000000', (select id from city where description = 'SÃO PAULO'), (select id from public.province where short = 'SP'));
 
-INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, state_id)
+INSERT INTO public.address(id, type_street_id, basic_health_unit_id, description, "number", district, complement, zip_code, city_id, province_id)
 VALUES(nextval('address_seq'), (select id from type_street where short = 'RUA'), (select id from public.basic_health_unit where code = 10),
-'DOUTOR CARDOSO', '77', 'Moema', '2° Andar', '40000000', (select id from city where description = 'SÃO PAULO'), (select id from public.state where short = 'SP'));
+'DOUTOR CARDOSO', '77', 'Moema', '2° Andar', '40000000', (select id from city where description = 'SÃO PAULO'), (select id from public.province where short = 'SP'));
 
 
 

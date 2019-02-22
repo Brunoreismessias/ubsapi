@@ -32,19 +32,19 @@ CREATE TABLE public.address
 		complement character varying(30),
 		zip_code character varying(8),
 		city_id bigint NOT NULL,
-		state_id bigint NOT NULL,
+		province_id bigint NOT NULL,
 		CONSTRAINT address_pk PRIMARY KEY (id)   
 	)
 WITH (
     OIDS = FALSE
 );
 
-CREATE TABLE public.state
+CREATE TABLE public.province
 	(
 		id bigint NOT NULL,
 		description character varying(30),
 		short character varying(2),
-		CONSTRAINT state_pk PRIMARY KEY (id)
+		CONSTRAINT province_pk PRIMARY KEY (id)
 	)
 WITH (
     OIDS = FALSE
@@ -55,7 +55,7 @@ CREATE TABLE public.city
 	(
 		id bigint NOT NULL,
 		description character varying(30),
-		state_id bigint,
+		province_id bigint,
 		CONSTRAINT city_pk PRIMARY KEY (id)
 	)
 WITH (
@@ -107,7 +107,7 @@ WITH (
 ALTER TABLE public.basic_health_unit OWNER to postgres;
 ALTER TABLE public.type_street OWNER to postgres;
 ALTER TABLE public.address OWNER to postgres;
-ALTER TABLE public.state OWNER to postgres;
+ALTER TABLE public.province OWNER to postgres;
 ALTER TABLE public.city OWNER to postgres;
 ALTER TABLE public.contacts OWNER to postgres;
 ALTER TABLE public.geo_code OWNER to postgres;
@@ -141,13 +141,13 @@ CREATE SEQUENCE public.address_seq
 ALTER SEQUENCE public.address_seq OWNER TO postgres;
 
    
-CREATE SEQUENCE public.state_seq
+CREATE SEQUENCE public.province_seq
     INCREMENT 1
     START 1
     MINVALUE 1
     MAXVALUE 999999999999;
 
-ALTER SEQUENCE public.state_seq OWNER TO postgres;
+ALTER SEQUENCE public.province_seq OWNER TO postgres;
     
    
 CREATE SEQUENCE public.city_seq
@@ -201,8 +201,8 @@ ALTER TABLE public.address
     ON DELETE NO ACTION;
 
 ALTER TABLE public.address
-    ADD CONSTRAINT state_fk FOREIGN KEY (state_id)
-    REFERENCES public.state (id) MATCH SIMPLE
+    ADD CONSTRAINT province_fk FOREIGN KEY (province_id)
+    REFERENCES public.province (id) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;
 
@@ -233,7 +233,7 @@ ALTER TABLE public.scores
     ON DELETE NO ACTION;
     
 ALTER TABLE public.city
-    ADD CONSTRAINT state_id FOREIGN KEY (state_id)
-    REFERENCES public.state (id) MATCH SIMPLE
+    ADD CONSTRAINT province_id FOREIGN KEY (province_id)
+    REFERENCES public.province (id) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;

@@ -2,32 +2,35 @@ package com.bionexo.ubsapi.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "type_street")
-public class TypeStreet implements Serializable{
+@Table(name = "city")
+public class City implements Serializable {
 
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -726885778131112566L;
+	private static final long serialVersionUID = 8169714722062551025L;
 
 	@Id
-	@SequenceGenerator(name = "type_street_seq", sequenceName = "type_street_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "type_street_seq")
+	@SequenceGenerator(name = "city_seq", sequenceName = "city_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "city_seq")
 	private Long id;
 
 	private String description;
-
-	@Column(name = "short")
-	private String shortening;
+	
+	@OneToOne
+	@JoinColumn(name="province_id")
+	private Province province;
 
 	public Long getId() {
 		return id;
@@ -45,12 +48,12 @@ public class TypeStreet implements Serializable{
 		this.description = description;
 	}
 
-	public String getShortening() {
-		return shortening;
+	public Province getProvince() {
+		return province;
 	}
 
-	public void setShortening(String shortening) {
-		this.shortening = shortening;
+	public void setProvince(Province province) {
+		this.province = province;
 	}
 
 	@Override
@@ -69,7 +72,7 @@ public class TypeStreet implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		TypeStreet other = (TypeStreet) obj;
+		City other = (City) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -77,5 +80,4 @@ public class TypeStreet implements Serializable{
 			return false;
 		return true;
 	}
-
 }

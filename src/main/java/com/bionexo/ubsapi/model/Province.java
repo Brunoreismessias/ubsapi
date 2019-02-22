@@ -11,17 +11,17 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "type_street")
-public class TypeStreet implements Serializable{
+@Table(name = "province")
+public class Province implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -726885778131112566L;
+	private static final long serialVersionUID = -8278506705170620359L;
 
 	@Id
-	@SequenceGenerator(name = "type_street_seq", sequenceName = "type_street_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "type_street_seq")
+	@SequenceGenerator(name = "province_seq", sequenceName = "province_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "province_seq")
 	private Long id;
 
 	private String description;
@@ -69,7 +69,7 @@ public class TypeStreet implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		TypeStreet other = (TypeStreet) obj;
+		Province other = (Province) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
