@@ -3,6 +3,7 @@ package com.bionexo.ubsapi.converter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 import com.bionexo.ubsapi.dto.TypeStreetDTO;
@@ -13,10 +14,8 @@ public class TypeStreetConverter {
 
 	public TypeStreetDTO convertEntityToDTO(TypeStreet typeStreet) {
 		TypeStreetDTO dto = new TypeStreetDTO();
-
-		dto.setId(typeStreet.getId());
-		dto.setShortening(typeStreet.getShortening());
-		dto.setDescription(typeStreet.getDescription());
+		
+		BeanUtils.copyProperties(typeStreet, dto);
 
 		return dto;
 	}
