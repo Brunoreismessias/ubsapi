@@ -26,9 +26,9 @@ public class GeoCode implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "geo_code_seq")
 	private Long id;
 
-	private BigDecimal latitude;
+	private Double latitude;
 
-	private BigDecimal longitude;
+	private Double longitude;
 
 	@OneToOne
 	@JoinColumn(name = "basic_health_unit_id")
@@ -42,19 +42,19 @@ public class GeoCode implements Serializable {
 		this.id = id;
 	}
 
-	public BigDecimal getLatitude() {
+	public Double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(BigDecimal latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
 
-	public BigDecimal getLongitude() {
+	public Double getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(BigDecimal longitude) {
+	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
 

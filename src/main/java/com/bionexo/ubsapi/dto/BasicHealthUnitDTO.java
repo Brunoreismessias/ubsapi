@@ -20,9 +20,9 @@ public class BasicHealthUnitDTO implements Serializable {
 
 	private String phone;
 
-	private BigDecimal latitude;
+	private Double latitude;
 
-	private BigDecimal longitude;
+	private Double longitude;
 
 	private Integer size;
 
@@ -72,19 +72,19 @@ public class BasicHealthUnitDTO implements Serializable {
 		this.phone = phone;
 	}
 
-	public BigDecimal getLatitude() {
+	public Double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(BigDecimal latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
 
-	public BigDecimal getLongitude() {
+	public Double getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(BigDecimal longitude) {
+	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
 
