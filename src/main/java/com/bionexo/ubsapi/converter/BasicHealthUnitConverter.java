@@ -26,6 +26,7 @@ public class BasicHealthUnitConverter {
 		dto.setAdaptationSeniors(basicHealthUnit.getScores().getAdaptationSeniors());
 		dto.setMedicalEquipment(basicHealthUnit.getScores().getMedicalEquipment());
 		dto.setMedicine(basicHealthUnit.getScores().getMedicine());
+		dto.setCity(basicHealthUnit.getAddress().getCity().getDescription());
 
 		dto.setAddress(this.formatAddress(basicHealthUnit.getAddress()));
 		dto.setPhone(this.formatPhone(basicHealthUnit.getContacts()));
