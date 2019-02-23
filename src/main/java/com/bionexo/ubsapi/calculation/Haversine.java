@@ -31,16 +31,4 @@ public class Haversine {
 		return result / NUMBER_THOUSAND;
 		
 	}
-	
-	public static void main (String args[]) {
-//		5.559968619378912
-		OriginDTO origin = new OriginDTO();
-		origin.setLatitude(50.12);
-		origin.setLongitude(50.15);
-		
-		GeoCode destiny = new GeoCode();
-		destiny.setLatitude(50.18);
-		destiny.setLongitude(50.20);
-		System.out.println(Haversine.calculate(origin,destiny));
-	}
 }

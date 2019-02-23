@@ -12,6 +12,8 @@ public class OriginDTO implements Serializable {
 	private Double latitude;
 
 	private Double longitude;
+	
+	private Double distance;
 
 	public Double getLatitude() {
 		return latitude;
@@ -27,6 +29,14 @@ public class OriginDTO implements Serializable {
 
 	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
+	}
+	
+	public Double getDistance() {
+		return distance;
+	}
+
+	public void setDistance(Double distance) {
+		this.distance = distance;
 	}
 
 	@Override
@@ -59,5 +69,7 @@ public class OriginDTO implements Serializable {
 			return false;
 		return true;
 	}
+
+
 
 }

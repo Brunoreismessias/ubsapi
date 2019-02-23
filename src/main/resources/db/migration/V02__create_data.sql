@@ -78,10 +78,10 @@ VALUES(nextval('address_seq'), (select id from type_street where short = 'RUA'),
 
 
 INSERT INTO public.geo_code (id, basic_health_unit_id, latitude, longitude)
-VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 1), 57.3, 10.5);
+VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 1), 50.18, 50.20);
 
 INSERT INTO public.geo_code (id, basic_health_unit_id, latitude, longitude)
-VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 2), 56.3, 12.5);
+VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 2), 50.12, 51.17);
 
 INSERT INTO public.geo_code (id, basic_health_unit_id, latitude, longitude)
 VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 3), 83.3, 18.5);
