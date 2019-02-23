@@ -78,8 +78,8 @@ CREATE TABLE public.geo_code
 	(
 		id bigint NOT NULL,
 		basic_health_unit_id bigint NOT NULL,
-		latitude numeric (12, 5) NOT NULL,
-		longitude numeric (12, 5) NOT NULL,
+		latitude numeric (4, 2) NOT NULL,
+		longitude numeric (4, 2) NOT NULL,
 		CONSTRAINT geo_code_pk PRIMARY KEY (id)
 	)
 WITH (
