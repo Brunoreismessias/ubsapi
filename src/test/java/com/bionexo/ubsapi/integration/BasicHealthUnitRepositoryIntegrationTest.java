@@ -21,17 +21,12 @@ import com.bionexo.ubsapi.repository.BasicHealthUnitRepository;
 @AutoConfigureTestDatabase(replace=Replace.NONE)
 public class BasicHealthUnitRepositoryIntegrationTest {
 
-//	@Autowired
-//	private TestEntityManager entityManager;
-	
 	@Autowired
 	private BasicHealthUnitRepository basicHealthUnitRepository;
 	
 	@Test
 	public void listAllBasicHealthUnit() {
-		
 		List<BasicHealthUnit> list = basicHealthUnitRepository.findAll();
-		
 		assertThat(list).isNotEmpty();
 	}
 }
