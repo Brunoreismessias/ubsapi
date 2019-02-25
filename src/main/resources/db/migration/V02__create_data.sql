@@ -84,28 +84,28 @@ INSERT INTO public.geo_code (id, basic_health_unit_id, latitude, longitude)
 VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 2), 50.12, 51.17);
 
 INSERT INTO public.geo_code (id, basic_health_unit_id, latitude, longitude)
-VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 3), 83.3, 18.5);
+VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 3), 50.13, 53,27);
 
 INSERT INTO public.geo_code (id, basic_health_unit_id, latitude, longitude)
-VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 4), 45.3, 18.5);
+VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 4), 50.33, 50.13);
 
 INSERT INTO public.geo_code (id, basic_health_unit_id, latitude, longitude)
-VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 5), 10.3, 12.5);
+VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 5), 50.17, 50.10);
 
 INSERT INTO public.geo_code (id, basic_health_unit_id, latitude, longitude)
-VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 6), 34.5, 67.90);
+VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 6), 34.55, 67.90);
 
 INSERT INTO public.geo_code (id, basic_health_unit_id, latitude, longitude)
-VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 7), 5.8, 89.5);
+VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 7), 34.38, 89.5);
 
 INSERT INTO public.geo_code (id, basic_health_unit_id, latitude, longitude)
-VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 8), 57.3, 45.5);
+VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 8), 34.33, 45.5);
 
 INSERT INTO public.geo_code (id, basic_health_unit_id, latitude, longitude)
 VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 9), 5.37, 56.5);
 
 INSERT INTO public.geo_code (id, basic_health_unit_id, latitude, longitude)
-VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 10), 45.3, 16.5);
+VALUES(nextval('geo_code_seq'), (select id from public.basic_health_unit where code = 10), 5.40, 5.89);
 
 
 INSERT INTO public.scores (id, basic_health_unit_id, "size", adaptation_for_seniors, medical_equipment, medicine)
