@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +28,18 @@ public class HaversineTest {
 	@Autowired
 	private BasicHealthUnitRepository basicHealthUnitRepository;
 	
-	@Test
-	public void distanceCalculation() {
-		OriginDTO origin = new OriginDTO();
+	OriginDTO origin;
+	
+	@Before
+	public void initOriginDTO() {
+		origin = new OriginDTO();
 		origin.setLatitude(50.12);
 		origin.setLongitude(50.15);
+		origin.setDistance(8.0);
+	}
+	
+	@Test
+	public void distanceCalculation() {
 
 		GeoCode destiny = new GeoCode();
 		destiny.setLatitude(50.18);
@@ -40,16 +48,8 @@ public class HaversineTest {
 		assertThat(Haversine.calculate(origin, destiny)).isEqualTo(7.563296058487345);
 	}
 	
-	
-	
 	@Test
 	public void listAllBasicHealthUnit() {
-		
-		OriginDTO origin = new OriginDTO();
-		origin.setLatitude(50.12);
-		origin.setLongitude(50.15);
-		origin.setDistance(8.0);
-		
 		
 		List<BasicHealthUnit> list = new ArrayList<>();
 		

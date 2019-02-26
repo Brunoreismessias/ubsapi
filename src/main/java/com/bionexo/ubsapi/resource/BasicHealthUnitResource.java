@@ -35,7 +35,7 @@ public class BasicHealthUnitResource {
 	})
 	
 	@GetMapping("/findUnitNear/{latitude}/{longitude}/{distance}")
-	public List<BasicHealthUnitDTO> finUnitNear(@PathVariable Double latitude, @PathVariable Double longitude, @PathVariable Double distance) {
+	public List<BasicHealthUnitDTO> findUnitNear(@PathVariable Double latitude, @PathVariable Double longitude, @PathVariable Double distance) {
 		return basicHealthUnitService.findUnitNear(latitude, longitude, distance);
 	}
 	
